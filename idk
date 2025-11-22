@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux VM in Browser</title>
+</head>
+<body>
+    <h1>Linux VM in Browser</h1>
+    <div id="emulator" style="width: 800px; height: 600px;"></div>
+
+    <!-- v86 library -->
+    <script src="https://copy.sh/v86/build/libv86.js"></script>
+
+    <script>
+        var emulator = new V86Starter({
+            wasm_path: "https://copy.sh/v86/build/v86.wasm",
+            memory_size: 64 * 1024 * 1024,
+            vga_memory_size: 8 * 1024 * 1024,
+            screen_container: document.getElementById("emulator"),
+            bios: { url: "https://copy.sh/v86/bios/seabios.bin" },
+            vga_bios: { url: "https://copy.sh/v86/bios/vgabios.bin" },
+            fda: { url: "https://copy.sh/v86/images/freedos.img" }, // or Linux imag
